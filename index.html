@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Practical e-books, printables, planners and templates. Instant digital download.">
+<title>Sushant Digital Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: sticky header, hash-routed "pages" in one file, soft green ground with white product cards */
+:root{
+  --bg:#EEF5EC;        /* soft pastel green ground */
+  --bg-2:#F7FBF6;      /* lighter band */
+  --card:#FFFFFF;
+  --ink:#111511;       /* near-black text */
+  --ink-2:#465248;     /* secondary text */
+  --line:#D3E1D0;      /* borders */
+  --mint:#CFE5CB;      /* tint for chips and icons */
+  --green:#1F4D36;     /* dark green buttons */
+  --green-2:#163A28;   /* button hover */
+  --gold:#C98A1B;      /* stars on the chore chart */
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r:16px;
+  --wrap:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5.2vw,3.9rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:20px}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.muted{color:var(--ink-2)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:999px;font:700 .92rem/1 var(--body);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-2)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-sm{min-height:42px;padding:10px 16px;font-size:.8rem}
+.btn-block{width:100%}
+
+/* Header */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;gap:20px;min-height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.1rem;line-height:1.05}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:1.05rem;flex:none}
+.logo small{display:block;font-family:var(--body);font-weight:600;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{text-decoration:none;font-weight:600;font-size:.94rem;padding:8px 12px;border-radius:999px}
+.nav a:hover,.nav a[aria-current="page"]{background:var(--mint)}
+.icon-btn{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer;color:var(--ink);position:relative}
+.icon-btn svg{width:20px;height:20px}
+.header-tools{display:flex;gap:8px}
+.badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:999px;background:var(--green);color:#fff;font-size:.7rem;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.menu-btn{display:none}
+.search-bar{border-top:1px solid var(--line);background:var(--bg-2)}
+.search-bar .wrap{display:flex;gap:10px;padding-block:12px}
+.search-bar input{flex:1;min-width:0}
+@media (max-width:960px){
+  .nav{position:fixed;inset:70px 0 auto 0;flex-direction:column;background:var(--bg-2);padding:12px 20px 20px;border-bottom:1px solid var(--line);display:none;margin:0}
+  .nav.open{display:flex}
+  .nav a{padding:14px 12px;font-size:1.05rem}
+  .menu-btn{display:grid}
+  .header-tools{margin-left:auto}
+}
+
+/* Sections */
+section{padding-block:72px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.section-head p{max-width:52ch}
+.band{background:var(--bg-2);border-block:1px solid var(--line)}
+
+/* Hero */
+.hero{padding-block:56px 64px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero-copy p{font-size:1.12rem;max-width:50ch;color:var(--ink-2)}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{position:relative;height:440px;min-width:0}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.hero-art{height:380px}}
+@media (max-width:480px){.hero-art{height:320px}}
+
+/* Book cover mockups (pure CSS) */
+.cover{position:relative;aspect-ratio:3/4;border-radius:6px 14px 14px 6px;padding:18px 16px 16px 24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.05),0 18px 40px -18px rgba(17,21,17,.45);max-width:100%}
+.cover::before{content:"";position:absolute;inset:0 auto 0 0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.12) 60%,transparent)}
+.cover .c-brand{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+.cover .c-title{font-family:var(--display);font-weight:800;line-height:1.02;font-size:1.35rem}
+.cover .c-sub{font-size:.72rem;line-height:1.35;opacity:.85;margin-top:8px}
+.cover .c-big{font-family:var(--display);font-weight:800;font-size:3.4rem;line-height:.9}
+.cover .c-tag{align-self:flex-start;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.18)}
+.cover.light .c-tag{background:rgba(0,0,0,.08)}
+.hero-art .cover{position:absolute;width:44%}
+.hero-art .h1{left:4%;top:12%;transform:rotate(-7deg);z-index:1}
+.hero-art .h2{left:30%;top:2%;transform:rotate(2deg);z-index:2}
+.hero-art .h3{left:54%;top:16%;transform:rotate(8deg);z-index:1}
+.sheet{position:absolute;right:2%;bottom:0;width:52%;background:var(--card);border-radius:12px;padding:14px;z-index:3;border:1px solid var(--line);box-shadow:0 20px 40px -20px rgba(17,21,17,.4);transform:rotate(-2deg)}
+.sheet h4{font-size:.85rem;margin-bottom:8px}
+.sheet table{width:100%;border-collapse:collapse;font-size:.66rem}
+.sheet th{font-weight:700;color:var(--ink-2);padding:3px 2px;text-align:center}
+.sheet th:first-child,.sheet td:first-child{text-align:left}
+.sheet td{border-top:1px solid var(--line);padding:4px 2px;text-align:center}
+.star{color:var(--gold)}
+.sheet-tag{position:absolute;top:-10px;right:12px;background:var(--ink);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:999px}
+
+/* Benefit strip */
+.strip{padding-block:0}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.strip-item{display:flex;gap:14px;align-items:flex-start;padding:22px;min-width:0}
+.strip-item+.strip-item{border-left:1px solid var(--line)}
+.ico{width:44px;height:44px;border-radius:12px;background:var(--mint);display:grid;place-items:center;flex:none;color:var(--green)}
+.ico svg{width:22px;height:22px}
+.strip-item strong{display:block;font-size:1rem}
+.strip-item span{font-size:.9rem;color:var(--ink-2)}
+@media (max-width:900px){.strip-grid{grid-template-columns:1fr 1fr}.strip-item:nth-child(3){border-left:0}.strip-item:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.strip-grid{grid-template-columns:1fr}.strip-item+.strip-item{border-left:0;border-top:1px solid var(--line)}}
+
+/* Categories */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;text-decoration:none;transition:transform .15s,border-color .15s}
+.cat:hover{transform:translateY(-3px);border-color:var(--green)}
+.cat-art{height:110px;border-radius:12px;background:var(--bg);display:grid;place-items:center;color:var(--green);margin-bottom:6px}
+.cat-art svg{width:56px;height:56px}
+.cat .count{font-size:.8rem;font-weight:600;color:var(--ink-2)}
+.cat .link{font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+@media (max-width:900px){.cat-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.cat-grid{grid-template-columns:1fr}}
+
+/* Product cards */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.prod-media{background:var(--bg);padding:28px 22% 24px;display:grid;place-items:center;text-decoration:none}
+.prod-media .cover{width:100%}
+.prod-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.prod-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.chip{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--mint);color:var(--green)}
+.chip.dark{background:var(--ink);color:#fff}
+.rating{font-size:.8rem;color:var(--ink-2);font-weight:600}
+.prod h3 a{text-decoration:none}
+.prod h3 a:hover{text-decoration:underline}
+.prod p{font-size:.93rem;color:var(--ink-2)}
+.price{font-family:var(--display);font-weight:800;font-size:1.5rem;font-variant-numeric:tabular-nums}
+.price s{font-family:var(--body);font-weight:500;font-size:.95rem;color:var(--ink-2);margin-left:6px}
+.prod-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;padding-top:6px}
+.slot{border:2px dashed var(--line);background:transparent;display:grid;place-items:center;text-align:center;padding:30px;color:var(--ink-2);min-height:280px}
+.slot strong{display:block;color:var(--ink);font-family:var(--display);font-size:1.1rem;margin-bottom:6px}
+
+/* Featured */
+.featured{display:grid;grid-template-columns:1fr 1.1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.featured-media{background:var(--green);display:grid;place-items:center;padding:48px 18%;position:relative}
+.featured-media .cover{width:100%;box-shadow:0 30px 50px -20px rgba(0,0,0,.6)}
+.featured-body{padding:44px;display:grid;gap:18px;align-content:center;min-width:0}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:999px;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F4D36' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E") center/13px no-repeat}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:860px){.featured{grid-template-columns:1fr}.featured-body{padding:28px}.featured-media{padding:40px 26%}}
+
+/* Why us */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px}
+.why{display:flex;gap:16px;align-items:flex-start}
+.why p{font-size:.93rem;color:var(--ink-2);margin-top:4px}
+@media (max-width:860px){.why-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.why-grid{grid-template-columns:1fr}}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;position:relative}
+.step-num{font-family:var(--display);font-weight:800;font-size:3rem;line-height:1;color:var(--green);margin-bottom:14px}
+.step p{color:var(--ink-2);margin-top:6px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* Reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:14px}
+.rev.placeholder{border-style:dashed;background:transparent}
+.rev .who{display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:999px;background:var(--mint);display:grid;place-items:center;font-weight:700;color:var(--green)}
+.stars{color:var(--gold);letter-spacing:2px}
+.stars.empty{color:var(--line)}
+@media (max-width:860px){.rev-grid{grid-template-columns:1fr}}
+
+/* CTA */
+.cta-box{background:var(--mint);border-radius:28px;padding:56px 40px;display:grid;grid-template-columns:1.4fr auto;gap:28px;align-items:center}
+.cta-box p{margin-top:12px;color:var(--ink-2);max-width:50ch}
+@media (max-width:760px){.cta-box{grid-template-columns:1fr;padding:36px 24px}}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:700;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:1.5rem;line-height:1;color:var(--green);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 20px 20px;color:var(--ink-2)}
+
+/* Footer */
+.footer{background:var(--green);color:#E4F0E2;padding-block:56px 28px;margin-top:40px}
+.footer a{text-decoration:none;color:#E4F0E2}
+.footer a:hover{text-decoration:underline;color:#fff}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px}
+.footer h4{font-family:var(--body);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#A9CBA6;margin-bottom:14px}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot-brand{font-family:var(--display);font-size:1.4rem;font-weight:800;color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.18);margin-top:40px;padding-top:20px;font-size:.85rem;color:#A9CBA6;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.foot-grid{grid-template-columns:1fr}}
+
+/* Product page */
+.crumbs{font-size:.88rem;color:var(--ink-2);padding-top:28px}
+.crumbs a{text-decoration:none;font-weight:600}
+.pdp{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;padding-block:28px 56px;align-items:start}
+.pdp-media{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:56px 20%;position:sticky;top:96px}
+.pdp-media .cover{width:100%}
+.pdp-info{display:grid;gap:20px;min-width:0}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.facts div{padding:14px 16px;min-width:0}
+.facts div+div{border-left:1px solid var(--line)}
+.facts dt{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.facts dd{margin:4px 0 0;font-weight:700}
+.pdp-block{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:12px}
+.preview-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.page-thumb{aspect-ratio:3/4;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;align-content:start;gap:6px;font-size:.62rem;color:var(--ink-2);max-width:100%}
+.page-thumb b{font-size:.7rem;color:var(--ink)}
+.page-thumb i{display:block;height:6px;border-radius:3px;background:var(--line)}
+.page-thumb i.s{width:60%}
+@media (max-width:900px){.pdp{grid-template-columns:1fr}.pdp-media{position:static;padding:40px 26%}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}.facts div+div{border-left:0;border-top:1px solid var(--line)}}
+
+/* Generic page */
+.page-hero{padding-block:56px 24px}
+.page-hero p{margin-top:14px;font-size:1.1rem;color:var(--ink-2);max-width:60ch}
+.prose{max-width:720px;display:grid;gap:16px;padding-bottom:40px}
+.prose h3{margin-top:12px}
+.note{background:#FFF7E3;border:1px solid #EBD7A3;color:#5A4513;border-radius:12px;padding:14px 16px;font-size:.92rem}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters a{text-decoration:none;font-weight:600;font-size:.9rem;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.filters a[aria-current="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.empty-state{background:var(--card);border:1px dashed var(--line);border-radius:var(--r);padding:40px;text-align:center;color:var(--ink-2)}
+
+/* Forms */
+label{font-weight:600;font-size:.92rem;display:grid;gap:6px}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+input:focus,textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.form{display:grid;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;padding-bottom:56px;align-items:start}
+.contact-grid > *{min-width:0}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* Thank you */
+.ty{max-width:640px;margin:56px auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:48px 32px;text-align:center;display:grid;gap:18px;justify-items:center}
+.ty-ico{width:72px;height:72px;border-radius:999px;background:var(--mint);display:grid;place-items:center;color:var(--green)}
+.ty-ico svg{width:36px;height:36px}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:14px 20px;border-radius:14px;font-size:.92rem;max-width:min(92vw,460px);opacity:0;pointer-events:none;transition:.25s;z-index:80}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Sushant Digital Products home">
+      <span class="logo-mark">S</span>
+      <span>Sushant<small>Digital Products</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#shop" data-nav="shop">Shop</a>
+      <a href="#bestsellers" data-nav="bestsellers">Best Sellers</a>
+      <a href="#categories" data-nav="categories">Categories</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#faq" data-nav="faq">FAQ</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn" id="searchToggle" aria-label="Search products" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg>
+        <span class="badge" id="cartCount" hidden>0</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="search-bar" id="searchBar" hidden>
+    <form class="wrap" id="searchForm" role="search">
+      <input id="searchInput" type="search" placeholder="Search e-books, planners, chore charts…" aria-label="Search products">
+      <button class="btn btn-primary btn-sm" type="submit">Search</button>
+    </form>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="display:grid;gap:10px;align-content:start">
+        <div class="foot-brand">Sushant Digital Products</div>
+        <p>Digital Products Made to Make Life Easier.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li><li><a href="#shop">Shop</a></li><li><a href="#bestsellers">Best Sellers</a></li>
+          <li><a href="#categories">Categories</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Customer info</h4>
+        <ul>
+          <li><a href="#privacy">Privacy Policy</a></li><li><a href="#terms">Terms &amp; Conditions</a></li>
+          <li><a href="#refund">Refund Policy</a></li><li><a href="#delivery">Digital Product Delivery Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul id="footContact"></ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Sushant Digital Products. All Rights Reserved.</span>
+      <span>Secure checkout · Instant digital delivery</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   STORE SETTINGS — edit these to update your website.
+   ===================================================================== */
+const STORE = {
+  name: "Sushant Digital Products",
+  email: "hello@yourdomain.com",          // ← your business email
+  currency: "₹",
+  social: [                                // ← paste your profile links, or delete a line
+    { label: "Instagram", url: "https://instagram.com/" },
+    { label: "YouTube",   url: "https://youtube.com/" },
+    { label: "Pinterest", url: "https://pinterest.com/" }
+  ]
+};
+
+const CATEGORIES = [
+  { id: "kids",      name: "Kids & Education",      desc: "Workbooks, worksheets and learning resources.",        icon: "kids" },
+  { id: "ebooks",    name: "E-books",               desc: "Practical and informative digital books.",              icon: "book" },
+  { id: "planners",  name: "Planners & Printables", desc: "Planners, trackers, checklists and printable resources.", icon: "planner" },
+  { id: "routines",  name: "Routine Charts",        desc: "Morning routines, chore charts and organization tools.", icon: "routine" },
+  { id: "templates", name: "Templates",             desc: "Ready-to-use digital templates.",                       icon: "template" },
+  { id: "learning",  name: "Learning Resources",    desc: "Educational and skill-building materials.",             icon: "learn" }
+];
+
+/* PRODUCTS — to add a product, copy one block and change the details.
+   buyUrl: paste your checkout link from Razorpay Payment Pages, Instamojo or Gumroad.
+   Those services take the payment, email the download link and send the buyer to
+   your Thank You page (set the redirect to  https://yourdomain.com/#thank-you ). */
+const PRODUCTS = [
+  {
+    id: "kids-routine-chore-system",
+    title: "Ultimate Kids Routine & Chore System",
+    subtitle: "Ages 3–10",
+    categories: ["kids", "routines", "planners"],
+    price: 299, comparePrice: 499,                   // ← example prices, change them
+    pages: "50+ pages", format: "Printable PDF (A4 & US Letter)",
+    short: "Morning, after-school and bedtime routines, chore charts, a reward system and trackers in one printable pack.",
+    includes: ["Morning, after-school, bedtime and daily routine charts", "Weekly chore chart and age-based chore lists", "Reward chart with a star and points system", "Allowance tracker and screen-time tracker", "School-day checklist"],
+    benefits: ["Fewer morning battles: kids can see what comes next", "Chores matched to what each age can actually do", "Rewards that build habits, not bribes", "Print once, reuse every week"],
+    who: "Parents of children aged 3 to 10 who want calmer mornings, smoother evenings and kids who help around the house.",
+    cover: { bg: "#F2D79B", fg: "#1D2A1F", style: "light", big: "3–10" },
+    bestseller: true, featured: true,
+    buyUrl: ""                                         // ← paste checkout link
+  },
+  {
+    id: "30-day-digital-detox",
+    title: "30-Day Digital Detox",
+    subtitle: "Reclaim Your Focus From Your Phone",
+    categories: ["ebooks", "learning"],
+    price: 249, comparePrice: 399,
+    pages: "30-day program", format: "PDF e-book",
+    short: "A day-by-day plan to cut mindless scrolling, build friction against bad phone habits and get your attention back.",
+    includes: ["A 30-day plan with one small action each day", "The Mindful Pause routine to use before you unlock your phone", "Habit-friction techniques that make scrolling harder", "Recommended apps and settings that reduce distraction"],
+    benefits: ["Spend less time on your phone without quitting it", "Simple daily steps, no willpower marathons", "Better focus for work, study and family time"],
+    who: "Anyone who picks up their phone without thinking and wants their focus back.",
+    cover: { bg: "#234E3A", fg: "#F4F1E4", style: "", big: "30" },
+    bestseller: true, featured: false,
+    buyUrl: ""
+  },
+  {
+    id: "chatgpt-small-business-prompts",
+    title: "ChatGPT for Small Business Owners",
+    subtitle: "100 Practical Prompts",
+    categories: ["ebooks", "templates", "learning"],
+    price: 199, comparePrice: 349,
+    pages: "≈20 pages", format: "PDF e-book",
+    short: "100 copy-and-paste prompts for marketing, customer emails, social posts, planning and everyday admin.",
+    includes: ["100 ready-to-use prompts grouped by business task", "Prompts for marketing, sales, customer service and planning", "Tips for getting better answers from ChatGPT", "A quick-start introduction for beginners"],
+    benefits: ["Save hours on writing and planning every week", "No technical knowledge needed", "Works for shops, freelancers and service businesses"],
+    who: "Small business owners, freelancers and side-hustlers who want to use AI without a learning curve.",
+    cover: { bg: "#141814", fg: "#CFE5CB", style: "", big: "100" },
+    bestseller: true, featured: false,
+    buyUrl: ""
+  }
+];
+
+/* REVIEWS — add real customer reviews here once you have them.
+   Example: { name: "Priya S.", rating: 5, text: "My kids love the star chart!", product: "kids-routine-chore-system" } */
+const REVIEWS = [];
+
+/* FAQ answers — edit freely */
+const FAQS = [
+  ["Are these physical or digital products?", "Everything in the store is digital. Nothing is shipped; you download your files right after payment."],
+  ["How will I receive my purchase?", "After payment you are taken to a Thank You page, and a download link is emailed to the address you used at checkout."],
+  ["How quickly can I download my product?", "Immediately. The download link usually arrives in your inbox within a few minutes. Check your spam or promotions folder if you don't see it."],
+  ["What file formats are available?", "Products are delivered as PDF files. Each product page lists the exact format and page size."],
+  ["Can I print the products?", "Yes. Printables come in A4 and US Letter sizes and can be printed at home or at a local print shop as many times as you need for personal use."],
+  ["Can I use the products on my phone or computer?", "Yes. PDFs open on any phone, tablet or computer. E-books read well on a phone; printables are best printed."],
+  ["What is your refund policy?", "Because digital files can't be returned, sales are generally final. If a file is damaged or you didn't receive it, email us and we'll fix it or refund you. See the Refund Policy for details."],
+  ["Can I share or resell the digital products?", "Products are for personal use only. Please don't share, resell or redistribute the files. You're welcome to print copies for your own family or household."]
+];
+
+/* =====================================================================
+   SITE CODE — you don't need to edit below this line.
+   ===================================================================== */
+const $ = (s, el = document) => el.querySelector(s);
+const app = $("#app");
+const money = n => STORE.currency + Number(n).toLocaleString("en-IN");
+const byId = id => PRODUCTS.find(p => p.id === id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const ICONS = {
+  download: '<path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16"/>',
+  easy: '<path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/>',
+  rupee: '<path d="M7 4h10M7 8.5h10M7 4c5 0 7 1.8 7 4.5S12 13 7 13l8 7"/>',
+  digital: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+  kids: '<circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0 1 12 0v3"/><path d="M3 11l3 1M21 11l-3 1"/>',
+  book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7M8 11h5"/>',
+  planner: '<rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M8 14h3M8 17h6"/>',
+  routine: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/>',
+  template: '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/>',
+  learn: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/>',
+  check: '<path d="M5 12l5 5L19 7"/>',
+  shield: '<path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/>',
+  heart: '<path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'
+};
+const icon = (n, w = 2) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
+
+function cover(p, extraClass = "") {
+  const c = p.cover;
+  return `<div class="cover ${c.style} ${extraClass}" style="background:${c.bg};color:${c.fg}" aria-hidden="true">
+    <span class="c-brand">Sushant Digital Products</span>
+    <span class="c-big">${esc(c.big)}</span>
+    <div><div class="c-title">${esc(p.title)}</div><div class="c-sub">${esc(p.subtitle)}</div></div>
+    <span class="c-tag">${esc(p.format.split(" ")[0] === "Printable" ? "Printable PDF" : "PDF e-book")}</span>
+  </div>`;
+}
+
+function ratingLine(p) {
+  const r = REVIEWS.filter(x => x.product === p.id);
+  if (!r.length) return `<span class="rating">New · no reviews yet</span>`;
+  const avg = r.reduce((a, x) => a + x.rating, 0) / r.length;
+  return `<span class="rating"><span class="stars">★</span> ${avg.toFixed(1)} (${r.length})</span>`;
+}
+
+function card(p) {
+  const cat = CATEGORIES.find(c => c.id === p.categories[0]);
+  return `<article class="prod">
+    <a class="prod-media" href="#p-${p.id}" aria-label="${esc(p.title)}">${cover(p)}</a>
+    <div class="prod-body">
+      <div class="prod-meta"><span class="chip">${esc(cat ? cat.name : "")}</span>${ratingLine(p)}</div>
+      <h3><a href="#p-${p.id}">${esc(p.title)}</a></h3>
+      <p>${esc(p.short)}</p>
+      <div class="price">${money(p.price)}${p.comparePrice ? `<s>${money(p.comparePrice)}</s>` : ""}</div>
+      <div class="prod-actions">
+        <button class="btn btn-primary btn-sm" data-buy="${p.id}">Buy now</button>
+        <a class="btn btn-ghost btn-sm" href="#p-${p.id}">View details</a>
+      </div>
+    </div>
+  </article>`;
+}
+
+const addSlot = `<div class="prod slot"><div><strong>More products coming soon</strong>New e-books, planners and printables are on the way.</div></div>`;
+
+/* ---------- Pages ---------- */
+function homePage() {
+  const best = PRODUCTS.filter(p => p.bestseller);
+  const feat = PRODUCTS.find(p => p.featured) || PRODUCTS[0];
+  const [a, b, c] = [PRODUCTS[1], PRODUCTS[0], PRODUCTS[2]];
+  return `
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">E-books · Printables · Planners · Templates</span>
+        <h1>Digital Products Made to Make Life Easier.</h1>
+        <p>Discover practical e-books, planners, children's resources, printables, templates, and digital tools designed to help you learn, organize, create, and grow.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#shop">Shop now</a>
+          <a class="btn btn-ghost" href="#bestsellers">Explore best sellers</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        ${cover(a, "h1")}${cover(b, "h2")}${cover(c, "h3")}
+        <div class="sheet">
+          <span class="sheet-tag">Printable</span>
+          <h4>My Weekly Chores</h4>
+          <table>
+            <tr><th>Chore</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th></tr>
+            <tr><td>Make bed</td><td class="star">★</td><td class="star">★</td><td class="star">★</td><td></td><td></td></tr>
+            <tr><td>Feed the pet</td><td class="star">★</td><td class="star">★</td><td></td><td></td><td></td></tr>
+            <tr><td>Pack school bag</td><td class="star">★</td><td class="star">★</td><td class="star">★</td><td></td><td></td></tr>
+            <tr><td>Tidy toys</td><td class="star">★</td><td></td><td class="star">★</td><td></td><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="wrap">
+      <div class="strip-grid">
+        <div class="strip-item"><span class="ico">${icon("download")}</span><div><strong>Instant Download</strong><span>Get your digital product quickly after purchase.</span></div></div>
+        <div class="strip-item"><span class="ico">${icon("easy")}</span><div><strong>Easy to Use</strong><span>Simple and practical digital resources.</span></div></div>
+        <div class="strip-item"><span class="ico">${icon("rupee")}</span><div><strong>Affordable</strong><span>Useful products at accessible prices.</span></div></div>
+        <div class="strip-item"><span class="ico">${icon("digital")}</span><div><strong>Digital Products</strong><span>No physical shipping required.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">Shop by category</span><h2 style="margin-top:8px">Explore Our Digital Products</h2></div>
+        <a class="btn btn-ghost btn-sm" href="#shop">View all products</a>
+      </div>
+      <div class="cat-grid">
+        ${CATEGORIES.map(c => {
+          const n = PRODUCTS.filter(p => p.categories.includes(c.id)).length;
+          return `<a class="cat" href="#shop-${c.id}">
+            <div class="cat-art">${icon(c.icon, 1.6)}</div>
+            <h3>${esc(c.name)}</h3>
+            <p class="muted">${esc(c.desc)}</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+              <span class="count">${n ? n + (n === 1 ? " product" : " products") : "Coming soon"}</span>
+              <span class="link">Explore ${icon("arrow")}</span>
+            </div>
+          </a>`;
+        }).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section id="bestsellers" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">Most popular</span><h2 style="margin-top:8px">Best Sellers</h2></div>
+        <p class="muted">Our most practical resources for families, focus and small business.</p>
+      </div>
+      <div class="prod-grid">${best.map(card).join("")}${best.length % 2 === 1 && best.length < 4 ? addSlot : ""}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="featured">
+        <div class="featured-media">${cover(feat)}</div>
+        <div class="featured-body">
+          <span class="eyebrow">Featured product</span>
+          <h2>${esc(feat.title)} <span class="muted" style="font-weight:500">· ${esc(feat.subtitle)}</span></h2>
+          <p class="muted">${esc(feat.short)}</p>
+          <ul class="checks">${feat.benefits.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+          <div class="price">${money(feat.price)}${feat.comparePrice ? `<s>${money(feat.comparePrice)}</s>` : ""}</div>
+          <div class="btn-row">
+            <button class="btn btn-primary" data-buy="${feat.id}">Buy now</button>
+            <a class="btn btn-ghost" href="#p-${feat.id}">View details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Our promise</span><h2 style="margin-top:8px">Why Choose Sushant Digital Products?</h2></div></div>
+      <div class="why-grid">
+        ${[
+          ["check", "Practical & Useful", "Every product solves a real, everyday problem."],
+          ["download", "Instant Digital Access", "No waiting for delivery. Start the same day."],
+          ["digital", "Easy to Download", "Simple PDF files that open on any device."],
+          ["rupee", "Affordable Pricing", "Fairly priced so good tools are within reach."],
+          ["easy", "Carefully Designed Resources", "Clean layouts that are pleasant to read and print."],
+          ["heart", "Useful for Everyday Life", "Made for parents, learners and small business owners."]
+        ].map(([i, t, d]) => `<div class="why"><span class="ico">${icon(i)}</span><div><h3>${t}</h3><p>${d}</p></div></div>`).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">How it works</span><h2 style="margin-top:8px">From checkout to download in minutes</h2></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Choose</h3><p>Find the digital product that suits your needs.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Purchase</h3><p>Click <b>Buy now</b> and complete your payment securely.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Download</h3><p>Receive your digital product and start using it immediately.</p></div>
+      </div>
+    </div>
+  </section>
+
+  ${reviewsSection()}
+
+  <section>
+    <div class="wrap">
+      <div class="cta-box">
+        <div><h2>Ready to Find Your Next Useful Digital Product?</h2><p>Explore our collection of practical digital resources and find something made for you.</p></div>
+        <a class="btn btn-dark" href="#shop">Shop now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="band">
+    <div class="wrap">
+      <div class="section-head" style="justify-content:center;text-align:center"><div><span class="eyebrow">Questions</span><h2 style="margin-top:8px">Frequently Asked Questions</h2></div></div>
+      ${faqList(FAQS)}
+    </div>
+  </section>`;
+}
+
+function reviewsSection(list = REVIEWS, title = "What Our Customers Say") {
+  const cards = list.length
+    ? list.map(r => `<article class="rev">
+        <div class="stars">${"★".repeat(r.rating)}<span class="stars empty">${"★".repeat(5 - r.rating)}</span></div>
+        <p>${esc(r.text)}</p>
+        <div class="who"><span class="avatar">${esc(r.name[0])}</span><div><strong>${esc(r.name)}</strong>${byId(r.product) ? `<div class="muted" style="font-size:.85rem">${esc(byId(r.product).title)}</div>` : ""}</div></div>
+      </article>`).join("")
+    : [1, 2, 3].map(() => `<article class="rev placeholder">
+        <div class="stars empty">★★★★★</div>
+        <p class="muted">Your first customer review will appear here. Add genuine reviews in the REVIEWS list in the site settings.</p>
+        <div class="who"><span class="avatar">?</span><div><strong>Customer name</strong></div></div>
+      </article>`).join("");
+  return `<section class="band"><div class="wrap">
+    <div class="section-head"><div><span class="eyebrow">Reviews</span><h2 style="margin-top:8px">${title}</h2></div></div>
+    <div class="rev-grid">${cards}</div>
+  </div></section>`;
+}
+
+function faqList(items) {
+  return `<div class="faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div>`;
+}
+
+function shopPage(catId = "", query = "") {
+  let list = PRODUCTS;
+  if (catId) list = list.filter(p => p.categories.includes(catId));
+  if (query) {
+    const q = query.toLowerCase();
+    list = list.filter(p => [p.title, p.subtitle, p.short, ...p.includes].join(" ").toLowerCase().includes(q));
+  }
+  const cat = CATEGORIES.find(c => c.id === catId);
+  return `
+  <div class="wrap page-hero">
+    <span class="eyebrow">Shop</span>
+    <h1 style="font-size:clamp(2rem,4vw,3rem);margin-top:8px">${query ? `Results for “${esc(query)}”` : cat ? esc(cat.name) : "All Digital Products"}</h1>
+    <p>${cat ? esc(cat.desc) : "E-books, printables, planners and templates. Everything downloads instantly."}</p>
+  </div>
+  <div class="wrap" style="padding-bottom:64px">
+    <nav class="filters" aria-label="Categories">
+      <a href="#shop" aria-current="${!catId && !query}">All</a>
+      ${CATEGORIES.map(c => `<a href="#shop-${c.id}" aria-current="${c.id === catId}">${esc(c.name)}</a>`).join("")}
+    </nav>
+    ${list.length
+      ? `<div class="prod-grid">${list.map(card).join("")}</div>`
+      : `<div class="empty-state"><h3 style="margin-bottom:8px">${query ? "No products match that search" : "Products coming soon"}</h3><p>${query ? "Try a different word, or browse all products." : "We're preparing new products for this category."}</p><a class="btn btn-primary btn-sm" style="margin-top:16px" href="#shop">Browse all products</a></div>`}
+  </div>`;
+}
+
+function productPage(p) {
+  const related = PRODUCTS.filter(x => x.id !== p.id).slice(0, 3);
+  const cat = CATEGORIES.find(c => c.id === p.categories[0]);
+  const reviews = REVIEWS.filter(r => r.product === p.id);
+  return `
+  <div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / <a href="#shop-${cat.id}">${esc(cat.name)}</a> / ${esc(p.title)}</div>
+    <div class="pdp">
+      <div class="pdp-media">${cover(p)}</div>
+      <div class="pdp-info">
+        <div class="prod-meta" style="justify-content:flex-start"><span class="chip dark">Instant download</span>${ratingLine(p)}</div>
+        <div><h1 style="font-size:clamp(2rem,4vw,3rem)">${esc(p.title)}</h1><p class="muted" style="font-size:1.15rem;margin-top:6px">${esc(p.subtitle)}</p></div>
+        <p style="font-size:1.05rem">${esc(p.short)}</p>
+        <div class="price" style="font-size:2rem">${money(p.price)}${p.comparePrice ? `<s>${money(p.comparePrice)}</s>` : ""}</div>
+        <div class="btn-row">
+          <button class="btn btn-primary" style="flex:1;min-width:200px" data-buy="${p.id}">Buy now</button>
+          <button class="btn btn-ghost" data-cart="${p.id}">Add to cart</button>
+        </div>
+        <dl class="facts" style="margin:0">
+          <div><dt>Pages</dt><dd>${esc(p.pages)}</dd></div>
+          <div><dt>Format</dt><dd>${esc(p.format)}</dd></div>
+          <div><dt>Delivery</dt><dd>Instant, by email</dd></div>
+        </dl>
+        <div class="pdp-block"><h3>What's included</h3><ul class="checks">${p.includes.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>
+        <div class="pdp-block"><h3>Key benefits</h3><ul class="checks">${p.benefits.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>
+        <div class="pdp-block"><h3>Who it's for</h3><p class="muted">${esc(p.who)}</p></div>
+        <div class="pdp-block"><h3>Preview</h3>
+          <div class="preview-row">${p.includes.slice(0, 3).map(i => `<div class="page-thumb"><b>${esc(i.split(",")[0].split(" and ")[0])}</b><i></i><i class="s"></i><i></i><i></i><i class="s"></i></div>`).join("")}</div>
+          <p class="muted" style="font-size:.85rem">Sample page layout. Replace with real page screenshots when ready.</p>
+        </div>
+        <div class="pdp-block"><h3>Questions about this product</h3>${faqList(FAQS.slice(1, 6))}</div>
+      </div>
+    </div>
+  </div>
+  ${reviewsSection(reviews, "Customer reviews")}
+  <section><div class="wrap">
+    <div class="section-head"><div><span class="eyebrow">You may also like</span><h2 style="margin-top:8px">Related products</h2></div></div>
+    <div class="prod-grid">${related.map(card).join("")}</div>
+  </div></section>`;
+}
+
+function aboutPage() {
+  return `
+  <div class="wrap page-hero"><span class="eyebrow">About us</span><h1 style="font-size:clamp(2rem,4vw,3rem);margin-top:8px">Practical tools for everyday life</h1>
+    <p>Sushant Digital Products creates practical, accessible and thoughtfully designed digital products that help people learn, organize, create and simplify everyday tasks.</p></div>
+  <div class="wrap prose">
+    <p>It started with a simple idea: the most useful tools are often the simplest. A clear routine chart can end a morning argument. A well-written guide can help you put your phone down. A good set of prompts can save a small business owner hours every week.</p>
+    <p>Every product in the store is designed to be used, not just downloaded. Layouts are clean and easy to print, instructions are plain, and prices are kept affordable so good resources are within everyone's reach.</p>
+    <h3>What we make</h3>
+    <ul class="checks"><li>Printable routine and chore systems for families</li><li>Practical e-books on focus, habits and productivity</li><li>Templates and prompt packs for small business owners</li><li>Planners, trackers and learning resources</li></ul>
+    <h3>Our promise</h3>
+    <p>If something isn't working for you, or a file won't open, write to us. A real person reads every message.</p>
+    <div class="btn-row" style="margin-top:8px"><a class="btn btn-primary" href="#shop">Shop now</a><a class="btn btn-ghost" href="#contact">Contact us</a></div>
+  </div>`;
+}
+
+function contactPage() {
+  return `
+  <div class="wrap page-hero"><span class="eyebrow">Contact</span><h1 style="font-size:clamp(2rem,4vw,3rem);margin-top:8px">Get in touch</h1>
+    <p>Questions about a product, a download that didn't arrive, or an idea for something new? Send a message.</p></div>
+  <div class="wrap contact-grid">
+    <form class="form" id="contactForm" novalidate>
+      <label for="cName">Name<input id="cName" name="name" required autocomplete="name"></label>
+      <label for="cEmail">Email<input id="cEmail" name="email" type="email" required autocomplete="email"></label>
+      <label for="cSubject">Subject<input id="cSubject" name="subject" required></label>
+      <label for="cMsg">Message<textarea id="cMsg" name="message" rows="6" required></textarea></label>
+      <p id="formMsg" class="muted" role="status"></p>
+      <button class="btn btn-primary" type="submit">Send message</button>
+    </form>
+    <aside class="pdp-block">
+      <span class="ico">${icon("mail")}</span>
+      <h3>Email us directly</h3>
+      <p><strong id="emailText" style="user-select:all;word-break:break-all">${esc(STORE.email)}</strong></p>
+      <button class="btn btn-ghost btn-sm" id="copyEmail" type="button">Copy email</button>
+      <p class="muted" style="font-size:.92rem">We usually reply within one working day.</p>
+      <h3 style="margin-top:8px">Follow along</h3>
+      <div class="btn-row">${STORE.social.map(s => `<a class="btn btn-ghost btn-sm" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join("")}</div>
+    </aside>
+  </div>`;
+}
+
+function thankYouPage() {
+  return `<div class="wrap"><div class="ty">
+    <div class="ty-ico">${icon("check", 2.5)}</div>
+    <h1 style="font-size:clamp(1.9rem,4vw,2.6rem)">Thank You for Your Purchase!</h1>
+    <p class="muted" style="font-size:1.08rem">Your order has been successfully completed. Your digital product is ready.</p>
+    <p>Your download link has also been sent to your email.</p>
+    <div class="note" style="text-align:left">Can't find the email? Check your spam or promotions folder, or write to <b>${esc(STORE.email)}</b> with your payment ID and we'll send it again.</div>
+    <div class="btn-row" style="justify-content:center"><a class="btn btn-ghost" href="#shop">Continue shopping</a></div>
+  </div></div>`;
+}
+
+const POLICIES = {
+  privacy: ["Privacy Policy", [
+    ["What we collect", "When you buy, our payment partner collects your name, email and payment details to process the order and deliver your files. When you use the contact form, we receive the details you type in."],
+    ["How we use it", "We use your email only to deliver your purchase, answer your questions and, if you opt in, send occasional updates about new products."],
+    ["Payments", "Payments are handled by a secure third-party payment provider. We never see or store your card or bank details."],
+    ["Your choices", "You can ask us to delete your information at any time by emailing us."]]],
+  terms: ["Terms & Conditions", [
+    ["Licence", "When you buy a product you receive a personal, non-transferable licence to use it. You may print copies for your own household or personal use."],
+    ["Restrictions", "You may not resell, share, upload, or redistribute the files or claim them as your own work."],
+    ["Pricing", "Prices are shown in Indian Rupees and may change at any time. The price at checkout is the price you pay."],
+    ["Changes", "We may update these terms from time to time. The current version is always on this page."]]],
+  refund: ["Refund Policy", [
+    ["Digital products", "Because digital files are delivered instantly and can't be returned, all sales are generally final."],
+    ["When we refund", "If your file is damaged, won't open, or you never received it, email us within 7 days of purchase. We'll fix the problem or give you a full refund."],
+    ["Duplicate purchases", "If you accidentally bought the same product twice, contact us and we'll refund the duplicate."]]],
+  delivery: ["Digital Product Delivery Policy", [
+    ["How delivery works", "All products are digital. After successful payment you'll be redirected to a Thank You page, and a download link is emailed to the address used at checkout."],
+    ["Delivery time", "Delivery is usually instant. Allow up to 15 minutes for the email to arrive and check your spam or promotions folder."],
+    ["Download problems", "If you have trouble downloading, email us with your payment ID and we'll resend your files."],
+    ["No shipping", "No physical items are shipped, and there are no shipping charges."]]]
+};
+
+function policyPage(key) {
+  const [title, parts] = POLICIES[key];
+  return `<div class="wrap page-hero"><span class="eyebrow">Customer information</span><h1 style="font-size:clamp(2rem,4vw,3rem);margin-top:8px">${title}</h1><p>Last updated October 2026.</p></div>
+  <div class="wrap prose">
+    ${parts.map(([h, t]) => `<h3>${h}</h3><p>${t}</p>`).join("")}
+    <p>Questions? Email <b>${esc(STORE.email)}</b>.</p>
+  </div>`;
+}
+
+/* ---------- Router ---------- */
+function route() {
+  const h = (location.hash || "#home").slice(1);
+  let html, nav = h, scrollTo = null;
+  if (h === "home" || h === "") { html = homePage(); nav = "home"; }
+  else if (["bestsellers", "categories", "faq"].includes(h)) { html = homePage(); scrollTo = h; }
+  else if (h === "shop") html = shopPage();
+  else if (h.startsWith("shop-")) { html = shopPage(h.slice(5)); nav = "shop"; }
+  else if (h.startsWith("search-")) { html = shopPage("", decodeURIComponent(h.slice(7)).replace(/-/g, " ")); nav = "shop"; }
+  else if (h.startsWith("p-") && byId(h.slice(2))) { html = productPage(byId(h.slice(2))); nav = "shop"; }
+  else if (h === "about") html = aboutPage();
+  else if (h === "contact") html = contactPage();
+  else if (h === "thank-you") html = thankYouPage();
+  else if (POLICIES[h]) html = policyPage(h);
+  else { html = homePage(); nav = "home"; }
+
+  app.innerHTML = html;
+  document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === nav ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  $("#nav").classList.remove("open"); $("#menuBtn").setAttribute("aria-expanded", "false");
+  if (scrollTo) requestAnimationFrame(() => { const el = document.getElementById(scrollTo); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 80 }); });
+  else window.scrollTo(0, 0);
+  bindPage();
+}
+
+function bindPage() {
+  const form = $("#contactForm");
+  if (form) form.addEventListener("submit", e => {
+    e.preventDefault();
+    const msg = $("#formMsg");
+    if (!form.checkValidity()) { msg.textContent = "Please fill in every field and use a valid email address."; return; }
+    const d = Object.fromEntries(new FormData(form));
+    const body = encodeURIComponent(`${d.message}\n\nFrom: ${d.name} (${d.email})`);
+    window.location.href = `mailto:${STORE.email}?subject=${encodeURIComponent(d.subject)}&body=${body}`;
+    msg.textContent = `Your email app should open with the message ready to send. If it doesn't, email us at ${STORE.email}.`;
+  });
+  const copy = $("#copyEmail");
+  if (copy) copy.addEventListener("click", () => {
+    navigator.clipboard.writeText(STORE.email).then(() => toast("Email address copied"), () => {
+      const r = document.createRange(); r.selectNodeContents($("#emailText"));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Email selected. Press Ctrl+C to copy.");
+    });
+  });
+}
+
+/* ---------- Buy / cart ---------- */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("sdp-cart") || "[]"); } catch (e) { cart = []; }
+const saveCart = () => { try { localStorage.setItem("sdp-cart", JSON.stringify(cart)); } catch (e) {} updateCart(); };
+function updateCart() { const b = $("#cartCount"); b.textContent = cart.length; b.hidden = !cart.length; }
+
+function buy(id) {
+  const p = byId(id);
+  if (p && p.buyUrl) window.location.href = p.buyUrl;
+  else toast("Checkout isn't connected yet. Add this product's payment link (buyUrl) in the site settings.");
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-buy]");
+  if (b) { buy(b.dataset.buy); return; }
+  const c = e.target.closest("[data-cart]");
+  if (c) {
+    if (!cart.includes(c.dataset.cart)) cart.push(c.dataset.cart);
+    saveCart(); toast("Added to cart. Open the cart to check out.");
+  }
+});
+
+$("#cartBtn").addEventListener("click", () => {
+  if (!cart.length) { toast("Your cart is empty."); return; }
+  const items = cart.map(byId).filter(Boolean);
+  app.innerHTML = `<div class="wrap page-hero"><span class="eyebrow">Your cart</span><h1 style="font-size:clamp(2rem,4vw,3rem);margin-top:8px">Cart</h1><p>Each product has its own secure checkout, so you'll pay for items one at a time.</p></div>
+    <div class="wrap" style="display:grid;gap:14px;padding-bottom:64px;max-width:820px">
+      ${items.map(p => `<div class="pdp-block" style="grid-template-columns:1fr auto;align-items:center">
+        <div style="min-width:0"><h3>${esc(p.title)}</h3><span class="price" style="font-size:1.2rem">${money(p.price)}</span></div>
+        <div class="btn-row"><button class="btn btn-primary btn-sm" data-buy="${p.id}">Buy now</button><button class="btn btn-ghost btn-sm" data-remove="${p.id}">Remove</button></div>
+      </div>`).join("")}
+      <a class="btn btn-ghost" href="#shop" style="justify-self:start">Continue shopping</a>
+    </div>`;
+  window.scrollTo(0, 0);
+});
+document.addEventListener("click", e => {
+  const r = e.target.closest("[data-remove]");
+  if (r) { cart = cart.filter(x => x !== r.dataset.remove); saveCart(); cart.length ? $("#cartBtn").click() : (location.hash = "shop", route()); }
+});
+
+/* ---------- Header controls ---------- */
+$("#menuBtn").addEventListener("click", () => {
+  const open = $("#nav").classList.toggle("open");
+  $("#menuBtn").setAttribute("aria-expanded", open);
+});
+$("#searchToggle").addEventListener("click", () => {
+  const bar = $("#searchBar"); bar.hidden = !bar.hidden;
+  $("#searchToggle").setAttribute("aria-expanded", !bar.hidden);
+  if (!bar.hidden) $("#searchInput").focus();
+});
+$("#searchForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const q = $("#searchInput").value.trim();
+  if (!q) return;
+  app.innerHTML = shopPage("", q); window.scrollTo(0, 0);
+  document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === "shop" ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+});
+
+let toastTimer;
+function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("show"), 3800); }
+
+$("#footContact").innerHTML = `<li style="word-break:break-all">${esc(STORE.email)}</li>` + STORE.social.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("");
+
+window.addEventListener("hashchange", route);
+updateCart();
+route();
+</script>
+</body>
+</html>
