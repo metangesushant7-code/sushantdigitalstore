@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Your Download Is Ready</title>
+<title>Thank You! Check Your Email | Sushant Digital Products</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,34 +43,48 @@ p{margin:0}
 .tips li::before{content:"✓";color:var(--green);font-weight:800;margin-right:8px}
 :focus-visible{outline:3px solid var(--green);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.product .pdf{color:#fff;font-size:.7rem}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;text-align:left;width:100%;counter-reset:s}
+.steps li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem}
+.steps li::before{counter-increment:s;content:counter(s);flex:none;width:28px;height:28px;border-radius:999px;background:var(--mint);color:var(--green);font-weight:800;display:grid;place-items:center;font-size:.85rem}
+.mail{display:flex;gap:12px;align-items:center;background:var(--green);color:#fff;border-radius:14px;padding:16px 18px;text-align:left;width:100%}
+.mail svg{flex:none;width:30px;height:30px}
+.mail b{display:block;font-family:var(--display);font-size:1.05rem}
+.mail span{font-size:.88rem;opacity:.9}
 </style>
+<link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
 <div class="page">
   <main class="card">
     <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg></div>
     <h1>Thank You for Your Purchase!</h1>
-    <p class="muted">Your order has been successfully completed. Your digital product is ready.</p>
+    <p class="muted">Your payment was successful. Your download link has been sent to the email address you entered at checkout.</p>
 
     <div class="product">
       <span class="pdf">PDF</span>
       <div><b>30-Day Digital Detox</b><span>58-page challenge workbook · PDF</span></div>
     </div>
 
-    <a class="btn btn-primary" id="downloadBtn" href="30-day-digital-detox-r4w8n2.pdf" download="30-Day-Digital-Detox.pdf">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg>
-      Download your product
-    </a>
+    <div class="mail">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      <div><b>Check your email now</b><span>It usually arrives within a minute.</span></div>
+    </div>
+
+    <ol class="steps">
+      <li>Open the email about your order from Dodo Payments, our payment partner.</li>
+      <li>Tap the download link in the email to get your PDF.</li>
+      <li>Save the PDF to your phone or computer so you always have it.</li>
+    </ol>
 
     <ul class="tips">
-      <li>Save the PDF to your phone or computer so you always have it.</li>
-      <li>Print on A4 or Letter paper, choosing "Fit to page".</li>
+      <li>Can't find it? Check your Spam or Promotions folder.</li>
       <li>Start with Day 1 today. It only takes 10 minutes.</li>
     </ul>
 
-    <div class="note">Download not working? Email <b id="email"></b> with your payment or order ID and we'll send you the file.</div>
+    <div class="note">No email after 10 minutes, or the link has expired? Email <b id="email"></b> with your payment or order ID and we'll send you the file.</div>
 
-    <a class="btn btn-ghost" href="index.html">Continue shopping</a>
+    <a class="btn btn-ghost" href="/">Continue shopping</a>
   </main>
 </div>
 
