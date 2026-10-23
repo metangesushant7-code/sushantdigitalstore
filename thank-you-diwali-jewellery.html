@@ -53,6 +53,28 @@ p{margin:0}
 .mail span{font-size:.88rem;opacity:.9}
 </style>
 <link rel="icon" type="image/png" href="/favicon.png">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4440069242803947');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4440069242803947&ev=PageView&noscript=1"/></noscript>
+<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var st = (q.get('status') || '').toLowerCase();
+  if (st && st !== 'succeeded' && st !== 'success' && st !== 'paid') return;
+  var pid = q.get('payment_id') || q.get('paymentId') || '';
+  var key = 'fbp_purchase_' + (pid || location.pathname);
+  try { if (localStorage.getItem(key)) return; localStorage.setItem(key, '1'); } catch (e) {}
+  fbq('track', 'Purchase', { value: 149, currency: 'INR', content_name: 'Diwali Jewellery Shop Templates', content_type: 'product' }, pid ? { eventID: pid } : {});
+})();
+</script>
 </head>
 <body>
 <div class="page">
