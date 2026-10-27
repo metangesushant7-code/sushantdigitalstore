@@ -110,6 +110,7 @@ section{padding-block:72px}
 
 /* Book cover mockups (pure CSS) */
 .cover{position:relative;aspect-ratio:3/4;border-radius:6px 14px 14px 6px;padding:18px 16px 16px 24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.05),0 18px 40px -18px rgba(17,21,17,.45);max-width:100%}
+.cover.cover-img{padding:0}.cover.cover-img img{width:100%;height:100%;object-fit:cover;display:block}
 .cover::before{content:"";position:absolute;inset:0 auto 0 0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.12) 60%,transparent)}
 .cover .c-brand{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
 .cover .c-title{font-family:var(--display);font-weight:800;line-height:1.02;font-size:1.35rem}
@@ -565,7 +566,9 @@ const PRODUCTS = [
     who: "Jewellery shop owners and gold & silver sellers who want festive Instagram, Facebook and WhatsApp posts for Dhanteras and Diwali.",
     cover: { bg: "#5B0E2D", fg: "#F3DFA2", style: "", big: "10", tag: "Canva template" },
     bestseller: false, featured: false,
-    buyUrl: "https://checkout.dodopayments.com/buy/pdt_0NqEONTkNzI1NsuN8r6XB?quantity=1&redirect_url=https%3A%2F%2Fsushantdigitalstore.store%2Fthank-you-diwali-jewellery.html"
+    buyUrl: "https://checkout.dodopayments.com/buy/pdt_0NqEONTkNzI1NsuN8r6XB?quantity=1&redirect_url=https%3A%2F%2Fsushantdigitalstore.store%2Fthank-you-diwali-jewellery.html",
+    coverImg: "previews/diwali-jewellery/01.jpg",
+    previews: [{ src: "previews/diwali-jewellery/01.jpg", caption: "Happy Dhanteras" }, { src: "previews/diwali-jewellery/02.jpg", caption: "Dhanteras Gold Offer" }, { src: "previews/diwali-jewellery/03.jpg", caption: "Shubh Muhurat" }, { src: "previews/diwali-jewellery/04.jpg", caption: "Festive Collection" }, { src: "previews/diwali-jewellery/05.jpg", caption: "Gold & Silver Coins" }, { src: "previews/diwali-jewellery/06.jpg", caption: "Diwali Mega Offer" }, { src: "previews/diwali-jewellery/07.jpg", caption: "Happy Diwali" }, { src: "previews/diwali-jewellery/08.jpg", caption: "Free Gift Offer" }, { src: "previews/diwali-jewellery/09.jpg", caption: "Old Gold Exchange" }, { src: "previews/diwali-jewellery/10.jpg", caption: "Thank You Post" }]
   },
   {
     id: "diwali-boutique-templates",
@@ -649,6 +652,7 @@ const icon = (n, w = 2) => `<svg viewBox="0 0 24 24" fill="none" stroke="current
 
 function cover(p, extraClass = "") {
   const c = p.cover;
+  if (p.coverImg) return `<div class="cover cover-img ${extraClass}" style="background:${c.bg}"><img src="${esc(p.coverImg)}" alt="${esc(p.title)} preview" loading="lazy"></div>`;
   return `<div class="cover ${c.style} ${extraClass}" style="background:${c.bg};color:${c.fg}" aria-hidden="true">
     <span class="c-brand">Sushant Digital Products</span>
     <span class="c-big">${esc(c.big)}</span>
